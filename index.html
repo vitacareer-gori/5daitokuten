@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LINE追加特典 | 豪華5大プレゼント</title>
+  <meta name="description" content="公式LINE友だち追加限定の特別5大特典一覧ページです。" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --primary-bordeaux: #4a0d18;
+      --deep-bordeaux: #1e0307;
+      --gold-bright: #fce79f;
+      --gold-primary: #d4af37;
+      --gold-deep: #8b6508;
+      --text-main: #240a0f;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --card-border: rgba(212, 175, 55, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Noto Sans JP', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text-main);
+      background-color: var(--deep-bordeaux);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ボルドー背景固定レイヤー */
+    .fixed-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -2;
+      background-image: url('https://lh3.googleusercontent.com/d/1JdgV2o5CXnZ86O-3R0h2FA68gkbQ_ksi');
+      background-size: cover;
+      background-position: center top;
+      background-repeat: no-repeat;
+    }
+
+    .bg-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      background: radial-gradient(circle at center, rgba(35, 4, 10, 0.15) 0%, rgba(20, 2, 6, 0.5) 100%);
+      pointer-events: none;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 40px 16px 64px;
+    }
+
+    /* ヘッダー */
+    header {
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .badge-sub {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      color: #fff9e6;
+      background: linear-gradient(135deg, #7c1a29 0%, #460912 100%);
+      padding: 6px 20px;
+      border-radius: 999px;
+      border: 1px solid #d4af37;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+      margin-bottom: 16px;
+      letter-spacing: 0.06em;
+    }
+
+    h1 {
+      font-size: 26px;
+      line-height: 1.35;
+      font-weight: 900;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.75), 0 0 24px rgba(212, 175, 55, 0.55);
+      margin-bottom: 14px;
+    }
+
+    h1 span {
+      display: inline-block;
+      background: linear-gradient(180deg, #fffbf0 0%, #f7d472 50%, #cca135 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .lead-text {
+      font-size: 14px;
+      color: #fdf5f5;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+      margin-bottom: 24px;
+      padding: 0 4px;
+    }
+
+    .scroll-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #d4af37 0%, #9e7515 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 36px;
+      border-radius: 999px;
+      text-decoration: none;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.45);
+      border: 1px solid #ffecad;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .scroll-btn:active {
+      transform: scale(0.97);
+    }
+
+    /* 特典カード一覧 */
+    .benefits-list {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .benefit-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 22px;
+      border: 1px solid var(--card-border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+    }
+
+    .card-thumb-wrap {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #2b080f;
+      margin-bottom: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      position: relative;
+    }
+
+    .card-thumb-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.25s ease;
+    }
+
+    /* 拡大可能な画像用スタイル */
+    .zoomable-wrap {
+      cursor: zoom-in;
+      position: relative;
+    }
+
+    .zoomable-wrap:active img {
+      transform: scale(0.98);
+    }
+
+    .zoom-hint-badge {
+      position: absolute;
+      right: 10px;
+      bottom: 10px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffffff;
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 999px;
+      backdrop-filter: blur(4px);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+    }
+
+    .card-tag {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 800;
+      color: #8c1d2e;
+      background-color: rgba(140, 29, 46, 0.1);
+      padding: 3px 10px;
+      border-radius: 6px;
+      letter-spacing: 0.08em;
+      margin-bottom: 8px;
+    }
+
+    .card-title {
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 1.45;
+      color: #240b10;
+      margin-bottom: 14px;
+    }
+
+    /* 標準ボタン */
+    .card-btn {
+      display: block;
+      width: 100%;
+      text-align: center;
+      background: linear-gradient(135deg, #8a1528 0%, #560a17 100%);
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 0;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(86, 10, 23, 0.35);
+      border: 1px solid rgba(247, 212, 114, 0.4);
+      transition: all 0.15s ease;
+    }
+
+    .card-btn:active {
+      transform: translateY(2px);
+      box-shadow: 0 2px 6px rgba(86, 10, 23, 0.3);
+    }
+
+    .card-btn::after {
+      content: ' ›';
+      font-size: 17px;
+      margin-left: 6px;
+      color: #f7d472;
+    }
+
+    /* 音声エピソード一覧用ボタングループ */
+    .audio-links-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .audio-btn {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #ffffff;
+      border: 1px solid #ebd9c0;
+      color: #2e1117;
+      text-decoration: none;
+      font-size: 13.5px;
+      font-weight: 700;
+      line-height: 1.4;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      transition: all 0.15s ease;
+    }
+
+    .audio-btn:active {
+      background: #faf3ea;
+      transform: scale(0.99);
+    }
+
+    .audio-btn span {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .audio-btn span::before {
+      content: '▶';
+      font-size: 11px;
+      color: #8c1d2e;
+      background: #fcf1f3;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .audio-btn-action {
+      font-size: 12px;
+      color: #8c1d2e;
+      font-weight: 800;
+      flex-shrink: 0;
+      margin-left: 8px;
+    }
+
+    /* 画像拡大モーダル */
+    .image-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.92);
+      z-index: 9999;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      touch-action: pinch-zoom;
+    }
+
+    .image-modal.active {
+      display: flex;
+    }
+
+    .modal-img {
+      max-width: 100%;
+      max-height: 88vh;
+      border-radius: 8px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+      object-fit: contain;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      font-size: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+
+    /* フッター */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      padding: 0 8px;
+    }
+
+    footer p {
+      font-size: 13px;
+      color: #fbeef1;
+      text-shadow: 0 1px 4px rgba(0, 0, 0, 0.85);
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 固定背景 -->
+  <div class="fixed-bg" aria-hidden="true"></div>
+  <div class="bg-overlay" aria-hidden="true"></div>
+
+  <div class="container">
+    <header>
+      <span class="badge-sub">LINE 友だち追加特典</span>
+      <h1>企画参加者限定！<br><span>豪華5大特典</span></h1>
+      <p class="lead-text">
+        私らしい働き方・生き方を見つけるための特典をまとめました。<br>気になる特典から順番に受け取ってください。
+      </p>
+      <a href="#benefits" class="scroll-btn">特典を受け取る ↓</a>
+    </header>
+
+    <main id="benefits" class="benefits-list" aria-label="5大特典一覧">
+      
+      <!-- 特典 1 -->
+      <article class="benefit-card">
+        <div class="card-thumb-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1gMbk6JNT5FUe_tLUze5GNongfEfY4xBr" alt="タイプ診断＆ワークシート" loading="lazy" />
+        </div>
+        <span class="card-tag">特典 1</span>
+        <h2 class="card-title">【キャリアタイプ診断】タイプ診断＆ワークシート</h2>
+        <a href="https://vitacareer-gori.github.io/vitacareer-shindan2/" class="card-btn" target="_blank" rel="noopener noreferrer">診断＆ワークを開く</a>
+      </article>
+
+      <!-- 特典 2（画像タップで拡大） -->
+      <article class="benefit-card">
+        <div class="card-thumb-wrap zoomable-wrap" id="mapThumbnail" onclick="openModal('https://lh3.googleusercontent.com/d/1gTTznoZIogW84vRuYAjT0QdEBd5b8zPE')">
+          <img src="https://lh3.googleusercontent.com/d/1gTTznoZIogW84vRuYAjT0QdEBd5b8zPE" alt="転職マップ" loading="lazy" />
+          <div class="zoom-hint-badge">🔍 タップで全体を拡大</div>
+        </div>
+        <span class="card-tag">特典 2</span>
+        <h2 class="card-title">【転職マップ】転職RPG 全体マップ</h2>
+        <button type="button" class="card-btn" style="cursor: pointer;" onclick="openModal('https://lh3.googleusercontent.com/d/1gTTznoZIogW84vRuYAjT0QdEBd5b8zPE')">マップを拡大して見る</button>
+      </article>
+
+      <!-- 特典 3 -->
+      <article class="benefit-card">
+        <div class="card-thumb-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1fWuQUQq9md9SdYYIebCfiORjMabopygE" alt="限定動画 私らしい働き方を見つけるまで" loading="lazy" />
+        </div>
+        <span class="card-tag">特典 3</span>
+        <h2 class="card-title">【限定動画】私らしい働き方を見つけるまで</h2>
+        <a href="https://youtu.be/lZ0_tRjirVM" class="card-btn" target="_blank" rel="noopener noreferrer">動画を視聴する</a>
+      </article>
+
+      <!-- 特典 4（音声4本） -->
+      <article class="benefit-card">
+        <div class="card-thumb-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1aBQu9bDZ31LyehDcld4NOfoeHSE-NAeY" alt="限定音声 後悔しないキャリア選択" loading="lazy" />
+        </div>
+        <span class="card-tag">特典 4</span>
+        <h2 class="card-title">【限定音声】後悔しないキャリア選択の特別音声</h2>
+        
+        <div class="audio-links-list">
+          <a href="https://stand.fm/episodes/6a8d1140caf663fac33a09db" class="audio-btn" target="_blank" rel="noopener noreferrer">
+            <span>キャリアの正解は他人の中にはない</span>
+            <span class="audio-btn-action">聴く ›</span>
+          </a>
+          <a href="https://stand.fm/episodes/6a8d1dfecaf663fac33a0a86" class="audio-btn" target="_blank" rel="noopener noreferrer">
+            <span>「向いている仕事が分からない」あなたへ</span>
+            <span class="audio-btn-action">聴く ›</span>
+          </a>
+          <a href="https://stand.fm/episodes/6a8d2b15927e4ce850c5d2f7" class="audio-btn" target="_blank" rel="noopener noreferrer">
+            <span>求人票の見方のポイント</span>
+            <span class="audio-btn-action">聴く ›</span>
+          </a>
+          <a href="https://stand.fm/episodes/6a8d35985f71d1c9845b1f87" class="audio-btn" target="_blank" rel="noopener noreferrer">
+            <span>「面接で上手く話せない」を克服するコツ</span>
+            <span class="audio-btn-action">聴く ›</span>
+          </a>
+        </div>
+      </article>
+
+      <!-- 特典 5 -->
+      <article class="benefit-card">
+        <div class="card-thumb-wrap">
+          <img src="https://lh3.googleusercontent.com/d/1K156OWLp87NIt9hfYKAy2dxCH_iownnm" alt="限定note 転職RPG" loading="lazy" />
+        </div>
+        <span class="card-tag">特典 5</span>
+        <h2 class="card-title">【限定note】転職RPG：あなたの冒険が、今はじまる</h2>
+        <a href="https://vitacareer-gori.github.io/tenshoku-rpg/" class="card-btn" target="_blank" rel="noopener noreferrer">noteを読む</a>
+      </article>
+
+    </main>
+
+    <footer>
+      <p>
+        必要な特典から順番に受け取って、<br>学びを次の行動へつなげてください。
+      </p>
+    </footer>
+  </div>
+
+  <!-- 特典②の画像拡大モーダル -->
+  <div id="imageModal" class="image-modal" onclick="closeModal()">
+    <button class="modal-close-btn" aria-label="閉じる" onclick="closeModal()">×</button>
+    <img id="modalImg" class="modal-img" src="" alt="拡大画像" onclick="event.stopPropagation()" />
+  </div>
+
+  <script>
+    function openModal(imgUrl) {
+      var modal = document.getElementById('imageModal');
+      var modalImg = document.getElementById('modalImg');
+      modalImg.src = imgUrl;
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+      var modal = document.getElementById('imageModal');
+      modal.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  </script>
+</body>
+</html>
