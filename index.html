@@ -28,23 +28,26 @@
     body {
       font-family: 'Noto Sans JP', sans-serif;
       /* 背景画像の設定 */
-      background: #3A0B11 url('https://lh3.googleusercontent.com/d/1JdgV2o5CXnZ86O-3R0h2FA68gkbQ_ksi') center top / cover no-repeat fixed;
+      background: #2D070B url('https://lh3.googleusercontent.com/d/1JdgV2o5CXnZ86O-3R0h2FA68gkbQ_ksi') center top / cover no-repeat fixed;
       color: var(--text-main);
       line-height: 1.6;
       padding-bottom: 50px;
       min-height: 100vh;
     }
 
-    /* ヘッダーエリア */
+    /* ヘッダーエリア：背景画像と自然に溶け合うグラデーション */
     .hero {
-      background: linear-gradient(180deg, rgba(58, 11, 17, 0.88) 0%, rgba(88, 17, 26, 0.75) 100%);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
+      background: linear-gradient(
+        180deg,
+        rgba(35, 5, 10, 0.85) 0%,
+        rgba(58, 11, 17, 0.65) 45%,
+        rgba(58, 11, 17, 0.25) 75%,
+        transparent 100%
+      );
       color: #FFFFFF;
       text-align: center;
-      padding: 46px 16px 36px;
+      padding: 48px 16px 52px;
       position: relative;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
     }
 
     /* スマホ画面で改行せず最大化する設定 */
@@ -53,11 +56,12 @@
       font-weight: 700;
       letter-spacing: 0.08em;
       color: var(--gold-light);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
       display: inline-block;
       white-space: nowrap;
-      border-bottom: 2px solid var(--gold-light);
+      border-bottom: 2px solid rgba(229, 201, 137, 0.8);
       padding-bottom: 4px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
     }
 
     .hero-title {
@@ -70,18 +74,20 @@
       background: linear-gradient(180deg, #FFFFFF 30%, var(--gold-light) 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 3px 12px rgba(0, 0, 0, 0.5));
     }
 
     .hero-desc {
       font-size: 0.95rem;
-      opacity: 0.92;
+      color: #F7EFEF;
       line-height: 1.7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
     }
 
     /* メインコンテナ */
     .container {
       max-width: 680px;
-      margin: -16px auto 0;
+      margin: 0 auto;
       padding: 0 16px;
       position: relative;
       z-index: 10;
@@ -265,7 +271,7 @@
     /* ページ最下部エリア（メッセージ＆ロゴフッター） */
     .bottom-section {
       text-align: center;
-      margin-top: 48px;
+      margin-top: 40px;
       padding: 32px 20px 24px;
       background: rgba(255, 255, 255, 0.94);
       border-radius: 16px;
